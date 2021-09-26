@@ -61,6 +61,7 @@ function validarEdadesIntegrantes (){
             edad.classList.add("marcar-error-input-edad");
             errores= errores - 1;
         }
+
     
        else { 
         edad.classList.remove("marcar-error-input-edad");             
@@ -71,37 +72,45 @@ function validarEdadesIntegrantes (){
     })   
     
 
-    errores===Number($edades.length)? (document.querySelector("#alertaedadintegrantes").classList.add("escondido"), organizarEdadesIntegrantes($edades)):(document.querySelector("#alertaedadintegrantes").classList.remove("escondido"),document.querySelector("#resultado").innerHTML="");
+    errores===Number($edades.length)? (document.querySelector("#alertaedadintegrantes").classList.add("escondido"), clasificarEdadesIntegrantes($edades)):(document.querySelector("#alertaedadintegrantes").classList.remove("escondido"),document.querySelector("#resultado").innerHTML="");
 
     errores = 0;
 
 };
 
 
-function organizarEdadesIntegrantes($edades){
+
+
+function clasificarEdadesIntegrantes($edades){
     const edades=[];
+
     for (i=0;i<$edades.length;i++){ 
 
     edades[i] =Number($edades[i].value);
     }
-    console.log(edades)
     edades.sort((a, b) => a - b);
     const promedio = sacarPromedio(edades);
     const edadIntegranteMasJoven = edades[0];
     const edadeItegranteMasGrande = edades[edades.length - 1];
-    imprimirResultado(edadIntegranteMasJoven,edadeItegranteMasGrande,promedio);
+    const respuesta = {
+        edadIntegranteMasJoven,
+        edadeItegranteMasGrande,
+        promedio
+       };
+    imprimirResultado(respuesta);
 };
 
 
 function sacarPromedio(numeros){
-    console.log(numeros)
+  
     const sum = numeros.reduce((previous, current) => current += previous);
     return sum / numeros.length
 };
 
 
-function imprimirResultado(joven,grande,promedio){
-    document.querySelector("#resultado").innerHTML =(`El intergrante más joven tiene ${joven} años,el más grande tiene ${grande} años y el promedio es de ${promedio} años`);
+function imprimirResultado(respuesta){
+    
+    document.querySelector("#resultado").innerHTML =(`El intergrante más joven tiene ${respuesta.edadIntegranteMasJoven} años,el más grande tiene ${respuesta.edadeItegranteMasGrande} años y el promedio es de ${respuesta.promedio} años`);
 };
 
 function resetear() {
