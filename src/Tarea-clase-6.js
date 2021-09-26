@@ -3,7 +3,7 @@ document.querySelector("#boton-integrantes").addEventListener("click",validarCan
 function validarCantidadIntegrantes (){
     const numeroIntegrantes = document.querySelector("#numero-integrantes").value;
 
-    if (Number(numeroIntegrantes) === 0){
+    if (Number(numeroIntegrantes) <= 0){
         document.querySelector("#error-cantidad-integrantes").className ="";
     }
     else {
