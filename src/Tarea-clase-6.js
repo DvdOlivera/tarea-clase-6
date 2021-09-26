@@ -22,7 +22,6 @@ for (let i=0;i< integrantes;i++){
     const nuevoInput = document.createElement("input");
     nuevoInput.setAttribute("class","edades");
     nuevoInput.setAttribute("type","Number");
-    nuevoInput.setAttribute("min","1");
     const nuevoLabel= document.createElement("label");
     document.querySelector("#segunda-seccion-formulario").appendChild(nuevoLabel);
     document.querySelector("#segunda-seccion-formulario").appendChild(nuevoInput);
