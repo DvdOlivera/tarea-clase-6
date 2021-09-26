@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="src/style.css">
+</head>
+<body>
+    <div class="megacontainer" id="ingresoedadesintegrantes">
+        <fieldset id="field">
+            <legend>Datos de Familia</legend>
+            <form  id="formulario" onsubmit="return false;" >
+                <div id="primera-seccion-formulario"> 
+                    
+                <label id="iniciointegrantes" for="numero-integrantes">Ingresá el número de integrantes en tu casa</label>
+                <input type="Number" id="numero-integrantes"/> 
+                <button class="boton-ingresar-integrantes"type= "submit" id= "boton-integrantes">INGRESAR</button> 
+                <P class="oculto" id="error-cantidad-integrantes">Ingresá la cantidad de integrantes</P>
+               
+              </div>   
+            </form>
+        </fieldset>
+        <p class="escondido" id="alertaedadintegrantes">Debes completar todos los campos</p>
+        <div id="resultado"></div>
+    </div>
+
+        
+   
+    <script src="src/Tarea-clase-6.js"></script>
+</body>
+</html>

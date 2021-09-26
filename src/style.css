@@ -1,0 +1,87 @@
+.megacontainer{
+        width: 450px;
+        min-height: 150px;
+        height: auto;
+        border-radius: 5px;
+        margin: 2% auto;
+        padding: 2%;
+        background-image: linear-gradient(-225deg, #E3FDF5 50%, #FFE6FA 50%);
+}
+
+.boton-ingresar-integrantes:hover {
+	background: rgb(254,193,81);
+    
+    
+}
+.boton-ingresar-edades:hover {
+	background: rgb(254,193,81);
+	
+}
+
+.boton-resetear:hover {
+	background: rgb(241, 63, 51);
+	
+}
+form {
+    
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+label {
+    
+    width: 200px;
+    
+}
+ 
+
+#segunda-seccion-formulario{
+    display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+ 
+#boton-integrantes{
+    margin-top: 10px;
+}
+#numero-integrantes{
+    margin-top: 10px;
+}
+button {
+    margin-top: 10pz;
+ 
+}
+.boton-edades{
+    
+    width: 70%;
+    margin-top: 10px;
+}
+
+.oculto{
+    display: none ;
+}
+#error-cantidad-integrantes {
+    color:red;
+
+    width: 100%;
+  
+}
+
+
+#alertaedadintegrantes {
+    color:red
+}
+.escondido{
+    display: none;
+}
+.marcar-error-input-edad{
+    border-color: red;
+    outline: 0 none;
+}
+
+.boton-resetear{
+    margin-top: 20px;
+}
