@@ -57,15 +57,15 @@ function validarEdadesIntegrantes (){
 
     $edades.forEach(edad =>{
 
-        if ( Number(edad.value) !== 0 ){
-            edad.classList.remove("marcar-error-input-edad");             
-              errores= errores + 1;
+        if ( Number(edad.value) <= 0){
+            edad.classList.add("marcar-error-input-edad");
+            errores= errores - 1;
         }
     
        else { 
-            
-            edad.classList.add("marcar-error-input-edad");
-            errores= errores - 1;
+        edad.classList.remove("marcar-error-input-edad");             
+        errores= errores + 1;
+
         }
 
     })   
