@@ -4,19 +4,20 @@ function validarCantidadIntegrantes (){
     const numeroIntegrantes = document.querySelector("#numero-integrantes").value;
 
     if (Number(numeroIntegrantes) <= 0){
-        document.querySelector("#error-cantidad-integrantes").className ="";
+       mostrarTextoErrorCantidadIntegrantes();
     }
     else {
-        document.querySelector("#error-cantidad-integrantes").className ="oculto";
+        ocultarTextoErrorCantidadIntegrantes();
         crearSegundaSeccionFormulario (numeroIntegrantes);
     }
 };
 
 function crearSegundaSeccionFormulario (integrantes){
-    document.querySelector("#primera-seccion-formulario").classList.add("oculto");
+
+    ocultarPrimeraSeccionFormulario();
     const segundaSeccionFormulario = document.createElement("div");
     segundaSeccionFormulario.setAttribute("id","segunda-seccion-formulario");
-    document.querySelector("#formulario").appendChild(segundaSeccionFormulario);
+    document.querySelector("#contenedor-segunda-seccion-formulario").appendChild(segundaSeccionFormulario);
 
 for (let i=0;i< integrantes;i++){
     const nuevoInput = document.createElement("input");
@@ -72,7 +73,7 @@ function validarEdadesIntegrantes (){
     })   
     
 
-    errores===Number($edades.length)? (document.querySelector("#alertaedadintegrantes").classList.add("escondido"), clasificarEdadesIntegrantes($edades)):(document.querySelector("#alertaedadintegrantes").classList.remove("escondido"),document.querySelector("#resultado").innerHTML="");
+    errores===Number($edades.length)? (ocultarTextoErrorEdadIntegrantes(), clasificarEdadesIntegrantes($edades)):(mostrarTextoErrorEdadIntegrantes(),borrarResultado());
 
     errores = 0;
 
@@ -115,9 +116,40 @@ function imprimirResultado(respuesta){
 
 function resetear() {
     document.querySelector('#formulario').reset();
-    document.querySelector("#primera-seccion-formulario").classList.remove("oculto");
-    document.querySelector("#segunda-seccion-formulario").innerHTML="";
-    document.querySelector("#alertaedadintegrantes").classList.add("escondido");
+    mostrarPrimeraSeccionFormulario();
+    borrarSegundaSeccionFormulario();
+    ocultarTextoErrorEdadIntegrantes();
+    borrarResultado();
+};
+
+function mostrarTextoErrorCantidadIntegrantes(){
+    document.querySelector("#error-cantidad-integrantes").classList.remove("oculto");
+};
+
+function ocultarTextoErrorCantidadIntegrantes(){
+    document.querySelector("#error-cantidad-integrantes").classList.add("oculto");
+};
+
+function mostrarPrimeraSeccionFormulario (){
+    document.querySelector("#contenedor-primera-seccion-formulario").classList.remove("oculto");
+};
+
+function ocultarPrimeraSeccionFormulario(){
+    document.querySelector("#contenedor-primera-seccion-formulario").classList.add("oculto");
+}
+function ocultarTextoErrorEdadIntegrantes(){
+    document.querySelector("#alerta-error-edad-integrantes").classList.add("escondido");
+};
+
+function mostrarTextoErrorEdadIntegrantes(){
+    document.querySelector("#alerta-error-edad-integrantes").classList.remove("escondido");
+};
+
+function borrarSegundaSeccionFormulario(){
+    document.querySelector("#contenedor-segunda-seccion-formulario").innerHTML="";
+};
+
+function borrarResultado(){
     document.querySelector("#resultado").innerHTML="";
 };
 

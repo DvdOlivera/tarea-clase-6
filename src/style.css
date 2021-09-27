@@ -13,6 +13,9 @@
     
     
 }
+.boton-ingresar-edades{
+    margin-top: 10px;
+}
 .boton-ingresar-edades:hover {
 	background: rgb(254,193,81);
 	
@@ -50,15 +53,6 @@ label {
 #numero-integrantes{
     margin-top: 10px;
 }
-button {
-    margin-top: 10pz;
- 
-}
-.boton-edades{
-    
-    width: 70%;
-    margin-top: 10px;
-}
 
 .oculto{
     display: none ;
@@ -71,7 +65,7 @@ button {
 }
 
 
-#alertaedadintegrantes {
+#alerta-error-edad-integrantes {
     color:red
 }
 .escondido{
