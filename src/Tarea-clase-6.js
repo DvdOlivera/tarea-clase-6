@@ -6,6 +6,9 @@ function validarCantidadIntegrantes (){
     if (Number(numeroIntegrantes) <= 0){
        mostrarTextoErrorCantidadIntegrantes();
     }
+    else if (Number(numeroIntegrantes)>100){
+        mostrarTextoErrorCantidadIntegrantes();
+    }
     else {
         ocultarTextoErrorCantidadIntegrantes();
         crearSegundaSeccionFormulario (numeroIntegrantes);
@@ -63,6 +66,11 @@ function validarEdadesIntegrantes (){
             errores= errores - 1;
         }
 
+        else if (Number(edad.value) >= 150){
+            edad.classList.add("marcar-error-input-edad");
+            errores= errores - 1;
+
+        }
     
        else { 
         edad.classList.remove("marcar-error-input-edad");             
