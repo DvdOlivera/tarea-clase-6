@@ -6,7 +6,7 @@ function validarCantidadIntegrantes (){
     if (Number(numeroIntegrantes) <= 0){
        mostrarTextoErrorCantidadIntegrantes();
     }
-    else if (Number(numeroIntegrantes)>100){
+    else if (Number(numeroIntegrantes)>50){
         mostrarTextoErrorCantidadIntegrantes();
     }
     else {
