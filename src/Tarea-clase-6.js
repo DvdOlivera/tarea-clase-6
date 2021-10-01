@@ -1,23 +1,52 @@
-document.querySelector("#boton-integrantes").addEventListener("click",validarCantidadIntegrantes);
+document.querySelector("#boton-integrantes").addEventListener("click",gestionarRespuestaCantidadIntegrantes);
 
-function validarCantidadIntegrantes (){
-    const numeroIntegrantes = document.querySelector("#numero-integrantes").value;
 
-    if (Number(numeroIntegrantes) <= 0){
-       mostrarTextoErrorCantidadIntegrantes();
+function gestionarRespuestaCantidadIntegrantes(){
+        const cantidadIntegrantes = guardarCantidadIntegrantes() ;
+        
+        if (validarCantidadIntegrantes(cantidadIntegrantes) === true){
+            mostrarTextoErrorCantidadIntegrantes();
+        } else{
+            ocultarTextoErrorCantidadIntegrantes();
+            gestionarSegundaParteFormulario(cantidadIntegrantes);   
+        }
+}
+
+function gestionarSegundaParteFormulario(cantidadIntegrantes){
+    ocultarPrimeraSeccionFormulario();
+    crearSegundaSeccionFormulario(cantidadIntegrantes);  
+
+}
+
+function gestionarRespuestaEdadesIntegrantes(){
+    const $nodeListEdadesIntegrantes = guardarEdadesIntegrantes();
+    let errores = validarEdadesIntegrantes($nodeListEdadesIntegrantes);
+    errores===Number($nodeListEdadesIntegrantes.length)? (ocultarTextoErrorEdadIntegrantes(), clasificarNodeListEdadesIntegrantes($nodeListEdadesIntegrantes)):
+        (mostrarTextoErrorEdadIntegrantes(),borrarResultado());
+}
+
+function guardarEdadesIntegrantes(){
+  return document.querySelectorAll(".edades")
+}
+function guardarCantidadIntegrantes() {
+   return document.querySelector("#numero-integrantes").value;
+   
+}
+
+function validarCantidadIntegrantes (cantidadIntegrantes){
+    if (Number(cantidadIntegrantes) <= 0){
+       return true;
     }
-    else if (Number(numeroIntegrantes)>50){
-        mostrarTextoErrorCantidadIntegrantes();
+    else if (Number(cantidadIntegrantes)>50){
+        return true;
     }
     else {
-        ocultarTextoErrorCantidadIntegrantes();
-        crearSegundaSeccionFormulario (numeroIntegrantes);
+        return false;
     }
 };
 
 function crearSegundaSeccionFormulario (integrantes){
 
-    ocultarPrimeraSeccionFormulario();
     const segundaSeccionFormulario = document.createElement("div");
     segundaSeccionFormulario.setAttribute("id","segunda-seccion-formulario");
     document.querySelector("#contenedor-segunda-seccion-formulario").appendChild(segundaSeccionFormulario);
@@ -38,7 +67,7 @@ for (let i=0;i< integrantes;i++){
     botonEdades.innerHTML="CALCULAR"  ;
     botonEdades.setAttribute("type","submit");
     document.querySelector("#segunda-seccion-formulario").appendChild(botonEdades);
-    botonEdades.addEventListener("click",validarEdadesIntegrantes);
+    botonEdades.addEventListener("click", gestionarRespuestaEdadesIntegrantes);
 
     const botonResetear = document.createElement("button");
     botonResetear.setAttribute("class","boton-resetear");
@@ -51,15 +80,15 @@ for (let i=0;i< integrantes;i++){
 };
 
 
-function validarEdadesIntegrantes (){
+function validarEdadesIntegrantes ($nodeListEdadesIntegrantes){
 
    
 
-    const $edades = document.querySelectorAll(".edades");
+
 
     let errores = 0;
 
-    $edades.forEach(edad =>{
+    $nodeListEdadesIntegrantes.forEach(edad =>{
 
         if ( Number(edad.value) <= 0){
             edad.classList.add("marcar-error-input-edad");
@@ -79,23 +108,22 @@ function validarEdadesIntegrantes (){
         }
 
     })   
+    return errores;
+
     
 
-    errores===Number($edades.length)? (ocultarTextoErrorEdadIntegrantes(), clasificarEdadesIntegrantes($edades)):(mostrarTextoErrorEdadIntegrantes(),borrarResultado());
-
-    errores = 0;
 
 };
 
 
 
 
-function clasificarEdadesIntegrantes($edades){
+function clasificarNodeListEdadesIntegrantes($nodeListEdades){
     const edades=[];
 
-    for (i=0;i<$edades.length;i++){ 
+    for (i=0;i<$nodeListEdades.length;i++){ 
 
-    edades[i] =Number($edades[i].value);
+    edades[i] =Number($nodeListEdades[i].value);
     }
     edades.sort((a, b) => a - b);
     const promedio = sacarPromedio(edades);
